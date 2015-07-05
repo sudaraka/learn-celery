@@ -2,6 +2,15 @@
 
 Practice code created while following [Celery Documentation](http://docs.celeryproject.org/en/latest/)
 
+## Install
+
+Install `celery` module into python3 virtual environment.
+
+    python -m venv .env
+    . .env/bin/activate
+    pip install celery
+    pip freeze > requirements.txt
+
 ## License
 
 Copyright (c) 2015, [Sudaraka Wijesinghe](http://sudaraka.org)
