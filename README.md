@@ -11,6 +11,20 @@ Install `celery` module into python3 virtual environment.
     pip install celery
     pip freeze > requirements.txt
 
+## Usage
+
+Run Celery worker in one terminal
+
+    celery -A tasks worker
+
+Run following for test
+
+    python
+    >>> from tasks import add
+    >>> r = add.delay(5, 3)
+    >>> r.get()
+    8
+
 ## License
 
 Copyright (c) 2015, [Sudaraka Wijesinghe](http://sudaraka.org)
