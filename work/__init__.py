@@ -1,4 +1,4 @@
-""" Celery task - first example """
+""" Celery work module """
 
 from celery import Celery
 

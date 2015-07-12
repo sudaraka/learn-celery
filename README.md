@@ -15,7 +15,7 @@ Install `celery` module into python3 virtual environment.
 
 Run Celery worker in one terminal
 
-    celery -A tasks worker
+    celery worker -A work
 
 Run following for test
 
