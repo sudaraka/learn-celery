@@ -1,17 +1,21 @@
 # Celery Example
 
-Practice code created while following [Celery Documentation](http://docs.celeryproject.org/en/latest/)
+Practice code created while following:
+
+  - [Celery Documentation](http://docs.celeryproject.org/en/latest/)
+  - [Using Celery With Flask](http://blog.miguelgrinberg.com/post/using-celery-with-flask) &
+  - [Celery and the Flask Application Factory Pattern](http://blog.miguelgrinberg.com/post/celery-and-the-flask-application-factory-pattern) by [Miguel Grinberg](https://twitter.com/miguelgrinberg)
 
 ## Install
 
-Install `celery` module into python3 virtual environment.
+Install `celery` and `flask` modules into python3 virtual environment using
+provided `requirements.txt`.
 
     python -m venv .env
     . .env/bin/activate
-    pip install celery
-    pip freeze > requirements.txt
+    pip install -r requirements.txt
 
-## Usage
+## Usage: simple task
 
 Run Celery worker in one terminal (make sure Redis is running)
 
@@ -24,6 +28,10 @@ Run following for test
     >>> r = add.delay(5, 3)
     >>> r.get()
     8
+
+## Usage: Run web server
+
+    ./bin/manage.py runserver
 
 ## License
 
