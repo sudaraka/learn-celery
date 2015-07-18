@@ -1,9 +1,9 @@
 """ Example celery task """
 
-from .. import app
+from . import celery
 
 
-@app.task
+@celery.task
 def add(x, y):
     """ Return the sum of x and y """
 

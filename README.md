@@ -15,12 +15,12 @@ Install `celery` module into python3 virtual environment.
 
 Run Celery worker in one terminal
 
-    celery worker -A work
+    celery worker -A src.tasks.celery
 
 Run following for test
 
     python
-    >>> from tasks import add
+    >>> from src.tasks import add
     >>> r = add.delay(5, 3)
     >>> r.get()
     8
