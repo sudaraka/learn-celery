@@ -1,6 +1,6 @@
 """ Example celery task """
 
-from . import celery
+from .worker import celery
 
 
 @celery.task

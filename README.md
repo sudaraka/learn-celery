@@ -13,9 +13,9 @@ Install `celery` module into python3 virtual environment.
 
 ## Usage
 
-Run Celery worker in one terminal
+Run Celery worker in one terminal (make sure Redis is running)
 
-    celery worker -A src.tasks.celery
+    celery worker -A src.tasks.worker.celery
 
 Run following for test
 
