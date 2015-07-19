@@ -25,6 +25,9 @@ Run following for test
 
     python
     >>> from src.tasks import add
+    >>> from src.web import create_app
+    >>> app = create_app()
+    >>> app.app_context().push()
     >>> r = add.delay(5, 3)
     >>> r.get()
     8

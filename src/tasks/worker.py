@@ -1,9 +1,6 @@
 """ Celery worker """
 
-from celery import Celery
+from ..web import celery, create_app
 
-from .config import celery_config
-
-
-celery = Celery('tasks')
-celery.config_from_object(celery_config)
+app = create_app()
+app.app_context().push()
