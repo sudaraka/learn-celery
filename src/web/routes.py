@@ -1,6 +1,8 @@
 """ Blueprint """
 
 from flask import Blueprint, request, render_template, url_for, redirect
+from flask import current_app
+from flask.ext.mail import Mail, Message
 
 blueprint = Blueprint('main', __name__)
 
@@ -15,6 +17,11 @@ def email_form():
     subject = request.form.get('subject') or 'Default Subject'
     text = request.form.get('msg') or 'Default message body'
 
-    # Send Message here
+    msg = Message(subject, sender='no-reply@test.com',
+                  recipients=['test@test.com'])
+    msg.body = text
+
+    mail = Mail(current_app)
+    mail.send(msg)
 
     return redirect(url_for('main.email_form'))

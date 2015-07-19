@@ -29,9 +29,18 @@ Run following for test
     >>> r.get()
     8
 
-## Usage: Run web server
+## Usage: Sending emails from Flask
+
+Run a dummy SMTP daemon
+
+    python -m smtpd -nc DebuggingServer
+
+Run Flask web server
 
     ./bin/manage.py runserver
+
+Finally open http://127.0.0.1:5000/, submit the form and inspect the console for
+email message.
 
 ## License
 
