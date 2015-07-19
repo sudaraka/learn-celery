@@ -34,7 +34,11 @@ Run following for test
 
 ## Usage: Sending emails from Flask
 
-Run a dummy SMTP daemon
+Run Celery worker in one terminal (make sure Redis is running)
+
+    celery worker -A src.tasks.worker.celery
+
+Run a dummy SMTP daemon on another terminal
 
     python -m smtpd -nc DebuggingServer
 
