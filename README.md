@@ -25,9 +25,9 @@ is not compatible with supervisord.
 
 Start `supervisord` using the etc/supervisord.conf, this will start:
 
-    1. Flask web server.
-    2. Celery worker
-    3. Python SMTP debugging daemon
+1. Flask web server.
+2. Celery worker
+3. Python SMTP debugging daemon
 
 Run `redis` instance on the default port.
 
