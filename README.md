@@ -15,13 +15,29 @@ provided `requirements.txt`.
     . .env/bin/activate
     pip install -r requirements.txt
 
-## Usage: simple task
+Optionally, install `supervisord` and `redis` globally via system package
+manager.
 
-Run Celery worker in one terminal (make sure Redis is running)
+__Note:__ Do NOT install `supervisord` via `pip` as we are using  Python 3 which
+is not compatible with supervisord.
 
-    celery worker -A src.tasks.worker.celery
+## Usage
 
-Run following for test
+Start `supervisord` using the etc/supervisord.conf, this will start:
+
+    1. Flask web server.
+    2. Celery worker
+    3. Python SMTP debugging daemon
+
+Run `redis` instance on the default port.
+
+### Simple task
+
+With `supervisord` running, start monitoring Celery output in one terminal...
+
+    supervisorctl tail -f celery
+
+...run following for test
 
     python
     >>> from src.tasks import add
@@ -32,22 +48,25 @@ Run following for test
     >>> r.get()
     8
 
-## Usage: Sending emails from Flask
+### Sending emails from Flask
 
-Run Celery worker in one terminal (make sure Redis is running)
+With `supervisord` running, start monitoring Celery output in one terminal...
 
-    celery worker -A src.tasks.worker.celery
+    supervisorctl tail -f celery
 
-Run a dummy SMTP daemon on another terminal
+...start monitoring SMTP daemon output in another terminal
 
-    python -m smtpd -nc DebuggingServer
-
-Run Flask web server
-
-    ./bin/manage.py runserver
+    supervisorctl tail -f smtpd
 
 Finally open http://127.0.0.1:5000/, submit the form and inspect the console for
 email message.
+
+## Note on `supervisord` and Python output
+
+By default all console out put of Python programs are buffered. This will cause
+the `supervisorctl tail -f ...` output to either not show up instantly or not
+show up at all. As a workaround for this pass `-u` argument to Python
+interpreter.
 
 ## License
 
